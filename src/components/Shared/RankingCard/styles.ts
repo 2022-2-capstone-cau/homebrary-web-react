@@ -74,7 +74,7 @@ export const RightButton = styled.button`
 export const InfoArea = styled.div`
   position: absolute;
   top: 50%;
-  left: 106px;
+  left: 26px;
   width: 129px;
   transform: translateY(-50%);
   display: flex;
