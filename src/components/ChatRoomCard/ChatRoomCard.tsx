@@ -24,7 +24,7 @@ const ChatRoomCard = ({ title, subTitle, rankerInfoClickHandler, imageURL }: Pro
       </S.InfoArea>
       <S.RightButton>
         <RightButton
-          onClick={rankerInfoClickHandler ? rankerInfoClickHandler : () => navigate('/ranking')}
+          onClick={rankerInfoClickHandler ? rankerInfoClickHandler : () => navigate('/chat/1')}
         />
       </S.RightButton>
     </S.RankingCardWrapper>

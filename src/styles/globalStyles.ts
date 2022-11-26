@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
     user-select: none;
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color:rgba(255,255,255,0);
+    box-sizing: content-box;
   }
   .container {
     padding: 0 20px;

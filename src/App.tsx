@@ -8,6 +8,7 @@ import ChangeNickName from './pages/ChangeNickName';
 import ChangePhoto from './pages/ChangePhoto';
 import Account from './pages/Account';
 import Signout from './pages/Signout';
+import ChatRoom from './pages/ChatRoom';
 
 function App() {
   return (
@@ -15,12 +16,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/chat" element={<Chat />} />
+        <Route path="/chat/1" element={<ChatRoom />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/mypage/settings" element={<Settings />} />
         <Route path="/mypage/change-nickname" element={<ChangeNickName />} />
         <Route path="/mypage/change-photo" element={<ChangePhoto />} />
         <Route path="/mypage/change-photo" element={<ChangePhoto />} />
         <Route path="/mypage/signout" element={<Signout />} />
+        <Route path="/mypage/account" element={<Account />} />
       </Routes>
     </BrowserRouter>
   );
