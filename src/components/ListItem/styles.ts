@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { RANKING_CARD_BG_COLOR } from '@constants/shared';
+import { RANKING_CARD_BG_COLOR } from '../../constants/shared';
 
 export const RankingCardWrapper = styled.div`
   position: relative;

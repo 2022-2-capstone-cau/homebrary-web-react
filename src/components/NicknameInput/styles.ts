@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { NicknameInputErrorType } from '@@types/shared';
-import { NICKNAME_ERROR_STATUS_COLOR } from '@constants/shared';
+import { NicknameInputErrorType } from '../../@types/shared';
+import { NICKNAME_ERROR_STATUS_COLOR } from '../../constants/shared';
 
 export const NicknameInputWrapper = styled.div`
   position: relative;
