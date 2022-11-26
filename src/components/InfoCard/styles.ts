@@ -5,7 +5,7 @@ export const InfoCardWrapper = styled.div<{ type: string }>`
   width: calc((100% - 13px) / 2);
   height: 186px;
   border-radius: 16px;
-  background-color: ${({ type }) => (type === 'visited' ? '#2a3ad2' : '#ffc737')};
+  background-color: ${({ type }) => (type === 'visited' ? '#FF463B' : '#ffc737')};
 
   svg {
     width: 100%;

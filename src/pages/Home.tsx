@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import InfoCard from '../components/InfoCard';
 
 import { ReactComponent as HorizontalLogo } from '../assets/horizontal-logo.svg';
+import RankingCard from '../components/Shared/RankingCard';
 
 interface Props {
   homeDataResponse?: any;
@@ -16,12 +17,28 @@ const mockData = {
   recommend: {
     category: {
       id: '1',
-      title: 'ㅈㄷㄹㄷㅈㄹ',
+      title: 'IT',
     },
     list: [
       {
         id: '1',
-        title: 'ㄴㅇㄹㄴㅇㄹ',
+        title: '책 이름',
+      },
+      {
+        id: '1',
+        title: '책 이름',
+      },
+      {
+        id: '1',
+        title: '책 이름',
+      },
+      {
+        id: '1',
+        title: '책 이름',
+      },
+      {
+        id: '1',
+        title: '책 이름',
       },
     ],
   },
@@ -47,11 +64,11 @@ const Home = () => {
           <RankingSectionTitle>
             내가 읽지 않은 {data.recommend.category.title} 분야 책 엿보기 👀
           </RankingSectionTitle>
-          {/*<RankingCardArea>*/}
-          {/*  {initialHomeDataResponse.recommend.list.map((item: any) => (*/}
-          {/*    <RankingCard key={item.id} value={item.title} />*/}
-          {/*  ))}*/}
-          {/*</RankingCardArea>*/}
+          <RankingCardArea>
+            {data.recommend.list.map((item: any) => (
+              <RankingCard key={item.id} title={item.title} />
+            ))}
+          </RankingCardArea>
         </RankingSection>
       </HomePage>
     </Layout>

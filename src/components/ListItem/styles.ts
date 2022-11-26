@@ -76,11 +76,12 @@ export const RightButton = styled.button`
 export const InfoArea = styled.div`
   position: absolute;
   top: 50%;
-  left: 26px;
+  left: 106px;
   width: 129px;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
+  align-items: space-between;
 `;
 
 export const Nickname = styled.p`

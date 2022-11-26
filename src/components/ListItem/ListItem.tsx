@@ -1,4 +1,4 @@
-import { ReactComponent as RightButton } from '../../../assets/ranking-card-right-button.svg';
+import { ReactComponent as RightButton } from '../../assets/ranking-card-right-button.svg';
 import * as S from './styles';
 
 interface Props {
@@ -6,7 +6,7 @@ interface Props {
   onClickHandler?: () => void;
 }
 
-const RankingCard = ({ title, onClickHandler }: Props) => {
+const ListItem = ({ title, onClickHandler }: Props) => {
   return (
     <S.RankingCardWrapper className="ranking-card">
       <S.InfoArea>
@@ -19,4 +19,4 @@ const RankingCard = ({ title, onClickHandler }: Props) => {
   );
 };
 
-export default RankingCard;
+export default ListItem;

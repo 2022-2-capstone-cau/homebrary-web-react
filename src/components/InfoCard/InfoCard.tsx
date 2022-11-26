@@ -21,7 +21,7 @@ const InfoCard = ({ type, onClick, value }: IInfoCard) => {
         <S.Value>{value ?? '-'}</S.Value>
         <S.Suffix> 일</S.Suffix>
       </S.ValueArea>
-      <S.Notification>자세히 보기 &gt;</S.Notification>
+      {/*<S.Notification>자세히 보기 &gt;</S.Notification>*/}
     </S.InfoCardWrapper>
   );
 };
