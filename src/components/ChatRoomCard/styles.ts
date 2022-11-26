@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
+import { RANKING_CARD_BG_COLOR } from '../../constants/shared';
+
 export const RankingCardWrapper = styled.div`
   position: relative;
   width: 100%;
   border-radius: 10px;
-  height: 66px;
+  height: 96px;
   background-color: #f8f8fc;
 
   & + & {
@@ -12,7 +14,7 @@ export const RankingCardWrapper = styled.div`
   }
 `;
 
-export const ProfileArea = styled.div<{ rank: number }>`
+export const ProfileArea = styled.div<{ rank?: number }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -79,6 +81,11 @@ export const InfoArea = styled.div`
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
+
+  & > .title {
+    color: black;
+    font-size: 16px;
+  }
 `;
 
 export const Nickname = styled.p`
