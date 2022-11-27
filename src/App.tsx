@@ -21,7 +21,6 @@ function App() {
         <Route path="/mypage/settings" element={<Settings />} />
         <Route path="/mypage/change-nickname" element={<ChangeNickName />} />
         <Route path="/mypage/change-photo" element={<ChangePhoto />} />
-        <Route path="/mypage/change-photo" element={<ChangePhoto />} />
         <Route path="/mypage/signout" element={<Signout />} />
         <Route path="/mypage/account" element={<Account />} />
       </Routes>
