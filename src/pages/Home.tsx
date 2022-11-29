@@ -4,6 +4,8 @@ import InfoCard from '../components/InfoCard';
 
 import { ReactComponent as HorizontalLogo } from '../assets/horizontal-logo.svg';
 import RankingCard from '../components/Shared/RankingCard';
+import { useQuery } from 'react-query';
+import { getHomeData, getMyData } from '../request';
 
 interface Props {
   homeDataResponse?: any;
@@ -53,7 +55,17 @@ const mockData = {
 };
 
 const Home = () => {
-  const data = mockData;
+  // const data = mockData;
+
+  const { isLoading, isSuccess, data } = useQuery(['home'], async () => await getHomeData());
+
+  if (isLoading) {
+    return <div>로딩중...</div>;
+  }
+
+  if (!isSuccess) {
+    return null;
+  }
 
   return (
     <Layout title="홈" noHeader>
@@ -64,17 +76,17 @@ const Home = () => {
           </LogoArea>
           <CatchPhraseArea>{'오늘은\n책 빌리는 날!'}</CatchPhraseArea>
           <InfoCardArea>
-            <InfoCard type="visited" value={data.rent.fastestRemainingReturnDay} />
-            <InfoCard type="ranking" value={data.rent.numberOfRental} />
+            <InfoCard type="visited" value={data?.rent?.fastestRemainingReturnDay} />
+            <InfoCard type="ranking" value={data?.rent?.numberOfRental} />
           </InfoCardArea>
         </MyInfoSection>
         <RankingSection>
           <RankingSectionTitle>
-            내가 읽지 않은 {data.recommend.category.title} 분야 책 엿보기 👀
+            내가 읽지 않은 {data?.recommend?.category?.title ?? 'IT'} 분야 책 엿보기 👀
           </RankingSectionTitle>
           <RankingCardArea>
-            {data.recommend.list.map((item: any) => (
-              <RankingCard key={item.id} title={item.title} />
+            {data?.recommend?.list?.map((item: any) => (
+              <RankingCard key={item.book_id} title={item.title} />
             ))}
           </RankingCardArea>
         </RankingSection>

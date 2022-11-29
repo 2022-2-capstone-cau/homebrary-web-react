@@ -75,7 +75,7 @@ export const InfoArea = styled.div`
   position: absolute;
   top: 50%;
   left: 26px;
-  width: 129px;
+  width: 80%;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;

@@ -8,7 +8,7 @@ const AUTH_TOKEN =
 axios.defaults.baseURL = 'http://3.34.67.144:3000/';
 instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
-export const getHomeData = () => instance.get(`/api/v1/home/feed`).then((res) => res.data.body);
+export const getHomeData = () => instance.get(`/api/v1/home`).then((res) => res.data.body);
 export const getMyData = () => instance.get(`/api/v1/user/me/mypage`).then((res) => res.data.body);
 export const changeNickname = (nickname: string) =>
   instance.put(`/api/v1/user/me/nickname`, { nickname });

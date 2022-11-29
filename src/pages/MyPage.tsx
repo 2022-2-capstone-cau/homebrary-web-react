@@ -2,6 +2,20 @@ import MyPageLayout from '../components/Layout/MyPageLayout';
 import MyProfile from '../components/MyProfile';
 import VisitedStore from '../components/VisitedStore';
 import styled from 'styled-components';
+import { useQuery } from 'react-query';
+import { getMyData } from '../request';
+import { useEffect } from 'react';
+
+// useEffect(() => {
+//   const data = async () => await getMyData()
+//
+//   return data
+// }
+//
+//
+//
+//
+// console.log(data)
 
 const mockData = {
   user: {
@@ -38,22 +52,31 @@ const mockData = {
 interface Props {}
 
 const MyPage = () => {
-  const data = mockData;
+  const { isLoading, isSuccess, data } = useQuery(['mypage'], async () => await getMyData());
+
+  if (isLoading) {
+    return <div>로딩중...</div>;
+  }
+
+  if (!isSuccess) {
+    return null;
+  }
+
   return (
-    <MyPageLayout nickname={data.user.name}>
-      <MyProfile userValue={data.user} summaryValue={data.summary} />
+    <MyPageLayout nickname={data?.user.name}>
+      <MyProfile userValue={data?.user} summaryValue={data?.summary} />
       <MyPagePage className="container">
         <div className="store-list-title">
-          <span>{data.user.name}</span>님의 대출 목록
+          <span>{data?.user.name}</span>님의 대출 목록
         </div>
         <div className="store-list-layout">
-          {data.rents && data.rents.map((value: any) => <VisitedStore value={value} />)}
+          {data?.rents && data?.rents.map((value: any) => <VisitedStore value={value} />)}
         </div>
         <div className="store-list-title">
-          <span>{data.user.name}</span>님의 보관 목록
+          <span>{data?.user.name}</span>님의 보관 목록
         </div>
         <div className="store-list-layout">
-          {data.owns && data.owns.map((value: any) => <VisitedStore value={value} />)}
+          {data?.owns && data?.owns.map((value: any) => <VisitedStore value={value} />)}
         </div>
       </MyPagePage>
     </MyPageLayout>
