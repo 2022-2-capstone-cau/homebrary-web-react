@@ -10,6 +10,7 @@ instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 export const getHomeData = () => instance.get(`/api/v1/home`).then((res) => res.data.body);
 export const getMyData = () => instance.get(`/api/v1/user/me/mypage`).then((res) => res.data.body);
+export const getChatRoomList = () => instance.get(`/api/v1/post/room`).then((res) => res.data.body);
 export const changeNickname = (nickname: string) =>
   instance.put(`/api/v1/user/me/nickname`, { nickname });
 export const checkDuplicateName = (nickname: string) =>

@@ -1,6 +1,8 @@
 import Layout from '../components/Layout';
 import styled from 'styled-components';
 import ChatRoomCard from '../components/ChatRoomCard';
+import { useQuery } from 'react-query';
+import { getChatRoomList } from '../request';
 
 const mockData = [
   {
@@ -21,15 +23,28 @@ const mockData = [
 ];
 
 const Chat = () => {
+  const { isLoading, isSuccess, data } = useQuery(
+    ['chatRoom'],
+    async () => await getChatRoomList(),
+  );
+
+  if (isLoading) {
+    return <div>로딩중...</div>;
+  }
+
+  if (!isSuccess) {
+    return null;
+  }
+
   return (
     <Layout title={'채팅 목록'}>
       <Container className={'container'}>
-        {mockData.map((room, idx) => (
+        {data?.map((room: any) => (
           <ChatRoomCard
-            key={idx}
-            title={room.title}
-            subTitle={room.subTitle}
-            imageURL={room.imageURL}
+            key={room.user_id}
+            title={room.last_message}
+            subTitle={room.name}
+            imageURL={room?.imageURL ?? '/homebrary-logo.png'}
           />
         ))}
       </Container>

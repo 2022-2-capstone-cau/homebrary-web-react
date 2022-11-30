@@ -67,8 +67,16 @@ export const RightButton = styled.button`
   position: absolute;
   height: 24px;
   top: 50%;
-  right: 20px;
+  right: 10px;
   transform: translateY(-50%);
+
+  & > svg {
+    width: 20px;
+
+    path {
+      fill: #747b81;
+    }
+  }
 `;
 
 export const InfoArea = styled.div`
@@ -98,4 +106,10 @@ export const StampAmount = styled.p`
   ${({ theme }) => theme.fonts.contents2};
   line-height: 27px;
   color: #707077;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow-wrap: break-word;
 `;
