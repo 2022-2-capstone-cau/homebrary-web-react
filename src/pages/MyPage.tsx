@@ -4,18 +4,6 @@ import VisitedStore from '../components/VisitedStore';
 import styled from 'styled-components';
 import { useQuery } from 'react-query';
 import { getMyData } from '../request';
-import { useEffect } from 'react';
-
-// useEffect(() => {
-//   const data = async () => await getMyData()
-//
-//   return data
-// }
-//
-//
-//
-//
-// console.log(data)
 
 const mockData = {
   user: {

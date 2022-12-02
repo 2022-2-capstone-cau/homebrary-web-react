@@ -41,11 +41,6 @@ const Settings = () => {
           프로필사진 변경
         </Link>
       </SettingSection>
-      <SettingSection>
-        <Link to="/mypage/account" className="setting-link">
-          계좌 정보
-        </Link>
-      </SettingSection>
     </>
   );
 };

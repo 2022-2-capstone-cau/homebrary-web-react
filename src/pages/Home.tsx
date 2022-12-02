@@ -6,6 +6,8 @@ import { ReactComponent as HorizontalLogo } from '../assets/horizontal-logo.svg'
 import RankingCard from '../components/Shared/RankingCard';
 import { useQuery } from 'react-query';
 import { getHomeData, getMyData } from '../request';
+import { Link } from 'react-router-dom';
+import { exeDeepLink } from '../utils/deepLink';
 
 interface Props {
   homeDataResponse?: any;
@@ -82,11 +84,16 @@ const Home = () => {
         </MyInfoSection>
         <RankingSection>
           <RankingSectionTitle>
-            내가 읽지 않은 {data?.recommend?.category?.title ?? 'IT'} 분야 책 엿보기 👀
+            ""님이 좋아하실 만한 {data?.recommend?.category?.title ?? 'IT'} 분야 책 엿보기 👀
           </RankingSectionTitle>
+
           <RankingCardArea>
             {data?.recommend?.list?.map((item: any) => (
-              <RankingCard key={item.book_id} title={item.title} />
+              <RankingCard
+                key={item.book_id}
+                title={item.title}
+                onClickHandler={() => exeDeepLink(`post/${item.book_id}`)}
+              />
             ))}
           </RankingCardArea>
         </RankingSection>
