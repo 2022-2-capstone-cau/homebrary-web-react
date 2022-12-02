@@ -6,7 +6,7 @@ import { ReactComponent as HorizontalLogo } from '../assets/horizontal-logo.svg'
 import RankingCard from '../components/Shared/RankingCard';
 import { useQuery } from 'react-query';
 import { getHomeData, getMyData } from '../request';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { exeDeepLink } from '../utils/deepLink';
 
 interface Props {
@@ -57,8 +57,6 @@ const mockData = {
 };
 
 const Home = () => {
-  // const data = mockData;
-
   const { isLoading, isSuccess, data } = useQuery(['home'], async () => await getHomeData());
 
   if (isLoading) {
@@ -68,6 +66,9 @@ const Home = () => {
   if (!isSuccess) {
     return null;
   }
+
+  // const data = mockData;
+  const navigate = useNavigate();
 
   return (
     <Layout title="홈" noHeader>
@@ -92,7 +93,16 @@ const Home = () => {
               <RankingCard
                 key={item.book_id}
                 title={item.title}
-                onClickHandler={() => exeDeepLink(`post/${item.book_id}`)}
+                onClickHandler={() => {
+                  //web?url=encodeURIComponent("http://.../")&title=닉네임변경
+                  //navigate(`homebrary://post/1`);
+                  //window.location.replace(`homebrary://post/${item.book_id}`);
+
+                  //location.href = `homebrary://post/1`;
+
+                  //exeDeepLink(`post/${item.book_id}`);
+                  console.log(`homebrary://post/${item.book_id}`, location.href);
+                }}
               />
             ))}
           </RankingCardArea>

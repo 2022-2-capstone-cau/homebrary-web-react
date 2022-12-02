@@ -23,18 +23,20 @@ const mockData = [
 ];
 
 const Chat = () => {
-  const { isLoading, isSuccess, data } = useQuery(
-    ['chatRoom'],
-    async () => await getChatRoomList(),
-  );
+  // const { isLoading, isSuccess, data } = useQuery(
+  //   ['chatRoom'],
+  //   async () => await getChatRoomList(),
+  // );
+  //
+  // if (isLoading) {
+  //   return <div>로딩중...</div>;
+  // }
+  //
+  // if (!isSuccess) {
+  //   return null;
+  // }
 
-  if (isLoading) {
-    return <div>로딩중...</div>;
-  }
-
-  if (!isSuccess) {
-    return null;
-  }
+  const data = mockData;
 
   return (
     <Layout title={'채팅 목록'}>

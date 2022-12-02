@@ -37,21 +37,6 @@ const mockData = [
 const ChatRoom = () => {
   const navigate = useNavigate();
 
-  const handleSignOut = async () => {
-    if (!showConfirmModal('정말 탈퇴하시겠습니까?')) return;
-
-    try {
-      //await requestDeleteUser();
-      showAlertModal('탈퇴가 완료되었습니다.');
-      navigate('/');
-    } catch (error) {
-      const { response } = error as requestError;
-      if (!response) return showAlertModal(NETWORK_ERROR);
-
-      return showAlertModal(UNKNOWN_ERROR);
-    }
-  };
-
   return (
     <ModalLayout title="효진 도서관">
       <Cointainer className={'container'}>
