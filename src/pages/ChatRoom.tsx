@@ -80,7 +80,9 @@ const ChatRoom = () => {
         {/*/>*/}
         <BubbleContainer>
           {isSuccess &&
-            data?.map((chat: any) => <ChatMessageBubble key={chat.date} message={chat.message} />)}
+            data?.map((chat: any) => (
+              <ChatMessageBubble key={`${chat.date}-${chat.message}`} message={chat.message} />
+            ))}
         </BubbleContainer>
         <Form onSubmit={handleSubmit}>
           <Input
