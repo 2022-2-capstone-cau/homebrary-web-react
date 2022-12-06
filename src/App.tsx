@@ -15,8 +15,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/chat" element={<Chat />} />
-        <Route path="/chat/:attn_id" element={<ChatRoom />} />
+        <Route path="/chats" element={<Chat />} />
+        <Route path="/chats/:attn_id" element={<ChatRoom />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/mypage/settings" element={<Settings />} />
         <Route path="/mypage/change-nickname" element={<ChangeNickName />} />
