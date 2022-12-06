@@ -58,6 +58,7 @@ const mockData = {
 
 const Home = () => {
   const { isLoading, isSuccess, data } = useQuery(['home'], async () => await getHomeData());
+  const { data: myData } = useQuery(['mypage'], async () => await getMyData());
 
   if (isLoading) {
     return <div>로딩중...</div>;
@@ -81,7 +82,8 @@ const Home = () => {
         </MyInfoSection>
         <RankingSection>
           <RankingSectionTitle>
-            ""님이 좋아하실 만한 {data?.recommend?.category?.title ?? 'IT'} 분야 책 엿보기 👀
+            {myData?.user?.name ?? '용수'}님이 좋아하실 만한{' '}
+            {data?.recommend?.category?.title ?? 'IT'} 분야 책 엿보기 👀
           </RankingSectionTitle>
 
           <RankingCardArea>

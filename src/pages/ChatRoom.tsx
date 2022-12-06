@@ -41,11 +41,8 @@ const mockData = [
 const ChatRoom = () => {
   const navigate = useNavigate();
   const { data } = useQuery(['chatRoom'], async () => await getChatContentList(1, 1));
-  const _rent = useQuery(['rent'], async () => await rent(1, 1, true));
 
   const [text, setText] = useState('');
-
-  console.log(data);
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
