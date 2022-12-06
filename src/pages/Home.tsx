@@ -75,36 +75,40 @@ const Home = () => {
             <HorizontalLogo />
           </LogoArea>
           <CatchPhraseArea>{'오늘은\n책 빌리는 날!'}</CatchPhraseArea>
-          <InfoCardArea>
-            <InfoCard type="visited" value={data?.rent?.fastestRemainingReturnDay} />
-            <InfoCard type="ranking" value={data?.rent?.numberOfRental} />
-          </InfoCardArea>
+          {isSuccess && (
+            <InfoCardArea>
+              <InfoCard type="visited" value={data?.rent?.fastestRemainingReturnDay} />
+              <InfoCard type="ranking" value={data?.rent?.numberOfRental} />
+            </InfoCardArea>
+          )}
         </MyInfoSection>
-        <RankingSection>
-          <RankingSectionTitle>
-            {myData?.user?.name ?? '용수'}님이 좋아하실 만한{' '}
-            {data?.recommend?.category?.title ?? 'IT'} 분야 책 엿보기 👀
-          </RankingSectionTitle>
+        {isSuccess && (
+          <RankingSection>
+            <RankingSectionTitle>
+              {myData?.user?.name ?? '용수'}님이 좋아하실 만한{' '}
+              {data?.recommend?.category?.title ?? 'IT'} 분야 책 엿보기 👀
+            </RankingSectionTitle>
 
-          <RankingCardArea>
-            {data?.recommend?.list?.map((item: any) => (
-              <RankingCard
-                key={item.book_id}
-                title={item.title}
-                onClickHandler={() => {
-                  //web?url=encodeURIComponent("http://.../")&title=닉네임변경
-                  //navigate(`homebrary://post/1`);
-                  //window.location.replace(`homebrary://post/${item.book_id}`);
+            <RankingCardArea>
+              {data?.recommend?.list?.map((item: any) => (
+                <RankingCard
+                  key={item.book_id}
+                  title={item.title}
+                  onClickHandler={() => {
+                    //web?url=encodeURIComponent("http://.../")&title=닉네임변경
+                    //navigate(`homebrary://post/1`);
+                    //window.location.replace(`homebrary://post/${item.book_id}`);
 
-                  //location.href = `homebrary://post/1`;
+                    //location.href = `homebrary://post/1`;
 
-                  //exeDeepLink(`post/${item.book_id}`);
-                  console.log(`homebrary://post/${item.book_id}`, location.href);
-                }}
-              />
-            ))}
-          </RankingCardArea>
-        </RankingSection>
+                    //exeDeepLink(`post/${item.book_id}`);
+                    console.log(`homebrary://post/${item.book_id}`, location.href);
+                  }}
+                />
+              ))}
+            </RankingCardArea>
+          </RankingSection>
+        )}
       </HomePage>
     </Layout>
   );
