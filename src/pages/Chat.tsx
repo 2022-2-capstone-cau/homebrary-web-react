@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ChatRoomCard from '../components/ChatRoomCard';
 import { useQuery } from 'react-query';
 import { getChatRoomList } from '../request';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const mockData = [
   {
@@ -36,25 +36,23 @@ const Chat = () => {
     return <div>로딩중...</div>;
   }
 
-  console.log(data);
-
   // const data = mockData;
   const navigate = useNavigate();
-  const { user_id } = useParams();
 
   return (
     <Layout title={'채팅 목록'}>
       <Container className={'container'}>
-        {data?.map((room: any) => (
-          <ChatRoomCard
-            key={room.attn_id}
-            title={room.bookName}
-            subTitle={room.name}
-            imageURL={room?.bookURL ?? '/homebrary-logo.png'}
-            user_id={room?.attn_id}
-            rankerInfoClickHandler={() => navigate(`/chat/${room.attn_id}`)}
-          />
-        ))}
+        {isSuccess &&
+          data?.map((room: any) => (
+            <ChatRoomCard
+              key={room.attn_id}
+              title={room.bookName}
+              subTitle={room.name}
+              imageURL={room?.bookURL ?? '/homebrary-logo.png'}
+              user_id={room?.attn_id}
+              rankerInfoClickHandler={() => navigate(`/chat/${room.attn_id}`)}
+            />
+          ))}
       </Container>
     </Layout>
   );

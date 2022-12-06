@@ -46,28 +46,28 @@ const MyPage = () => {
     return <div>로딩중...</div>;
   }
 
-  if (!isSuccess) {
-    return null;
-  }
-
   return (
-    <MyPageLayout nickname={data?.user.name}>
-      <MyProfile userValue={data?.user} summaryValue={data?.summary} />
-      <MyPagePage className="container">
-        <div className="store-list-title">
-          <span>{data?.user.name}</span>님의 대출 목록
-        </div>
-        <div className="store-list-layout">
-          {data?.rents && data?.rents.map((value: any) => <VisitedStore value={value} />)}
-        </div>
-        <div className="store-list-title">
-          <span>{data?.user.name}</span>님의 보관 목록
-        </div>
-        <div className="store-list-layout">
-          {data?.owns && data?.owns.map((value: any) => <VisitedStore value={value} />)}
-        </div>
-      </MyPagePage>
-    </MyPageLayout>
+    <>
+      {isSuccess && (
+        <MyPageLayout nickname={data?.user.name}>
+          <MyProfile userValue={data?.user} summaryValue={data?.summary} />
+          <MyPagePage className="container">
+            <div className="store-list-title">
+              <span>{data?.user.name}</span>님의 대출 목록
+            </div>
+            <div className="store-list-layout">
+              {data?.rents && data?.rents.map((value: any) => <VisitedStore value={value} />)}
+            </div>
+            <div className="store-list-title">
+              <span>{data?.user.name}</span>님의 보관 목록
+            </div>
+            <div className="store-list-layout">
+              {data?.owns && data?.owns.map((value: any) => <VisitedStore value={value} />)}
+            </div>
+          </MyPagePage>
+        </MyPageLayout>
+      )}
+    </>
   );
 };
 

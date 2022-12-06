@@ -40,7 +40,7 @@ const mockData = [
 
 const ChatRoom = () => {
   const navigate = useNavigate();
-  const { data } = useQuery(['chatRoom'], async () => await getChatContentList(1, 1));
+  const { data, isSuccess } = useQuery(['chatRoom'], async () => await getChatContentList(1, 1));
 
   const [text, setText] = useState('');
 
@@ -79,9 +79,8 @@ const ChatRoom = () => {
         {/*  }}*/}
         {/*/>*/}
         <BubbleContainer>
-          {data?.map((chat: any) => (
-            <ChatMessageBubble key={chat.date} message={chat.message} />
-          ))}
+          {isSuccess &&
+            data?.map((chat: any) => <ChatMessageBubble key={chat.date} message={chat.message} />)}
         </BubbleContainer>
         <Form onSubmit={handleSubmit}>
           <Input
