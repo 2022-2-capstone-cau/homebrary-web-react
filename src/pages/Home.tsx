@@ -102,8 +102,8 @@ const Home = () => {
 
                     //location.href = `homebrary://post/1`;
 
-                    //exeDeepLink(`post/${item.book_id}`);
-                    console.log(`homebrary://post/${item.book_id}`, location.href);
+                    exeDeepLink(`post/${item.book_id}`);
+                    //console.log(`homebrary://post/${item.book_id}`, location.href);
                   }}
                 />
               ))}
