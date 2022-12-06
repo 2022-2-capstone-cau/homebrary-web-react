@@ -63,10 +63,6 @@ const Home = () => {
     return <div>로딩중...</div>;
   }
 
-  if (!isSuccess) {
-    return null;
-  }
-
   // const data = mockData;
   const navigate = useNavigate();
 
