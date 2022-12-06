@@ -69,23 +69,26 @@ export const RightButton = styled.button`
   position: absolute;
   height: 24px;
   top: 50%;
-  right: 20px;
+  right: 10px;
   transform: translateY(-50%);
+
+  & > svg {
+    width: 20px;
+
+    path {
+      fill: #747b81;
+    }
+  }
 `;
 
 export const InfoArea = styled.div`
   position: absolute;
   top: 50%;
-  left: 106px;
-  width: 129px;
+  left: 86px;
+  width: 80%;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-
-  & > .title {
-    color: black;
-    font-size: 16px;
-  }
 `;
 
 export const Nickname = styled.p`
@@ -104,5 +107,16 @@ export const Nickname = styled.p`
 export const StampAmount = styled.p`
   ${({ theme }) => theme.fonts.contents2};
   line-height: 27px;
+  color: black;
+  width: 80%;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow-wrap: break-word;
+`;
+
+export const SubTitle = styled(StampAmount)`
   color: #707077;
 `;

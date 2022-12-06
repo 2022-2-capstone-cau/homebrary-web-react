@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/chat" element={<Chat />} />
-        <Route path="/chat/1" element={<ChatRoom />} />
+        <Route path="/chat/:user_id" element={<ChatRoom />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/mypage/settings" element={<Settings />} />
         <Route path="/mypage/change-nickname" element={<ChangeNickName />} />

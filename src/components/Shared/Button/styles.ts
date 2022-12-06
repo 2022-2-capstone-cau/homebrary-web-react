@@ -32,9 +32,9 @@ export const Button = styled.button<ButtonProps>`
   outline: none;
   cursor: pointer;
 
-  & + & {
-    margin-top: 14px;
-  }
+  // & + & {
+  //   margin-top: 14px;
+  // }
 
   &:disabled {
     background-color: ${({ theme }) => theme.colors.black300};

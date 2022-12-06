@@ -10,7 +10,18 @@ instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 export const getHomeData = () => instance.get(`/api/v1/home`).then((res) => res.data.body);
 export const getMyData = () => instance.get(`/api/v1/user/me/mypage`).then((res) => res.data.body);
+export const getChatContentList = (attn_id: number, book_id: number) =>
+  instance
+    .get(`/api/v1/post/chat?attn_id=${attn_id}&book_id=${book_id}`)
+    .then((res) => res.data.body);
 export const getChatRoomList = () => instance.get(`/api/v1/post/room`).then((res) => res.data.body);
+export const sendChat = (attn_id: number, message: string, book_id: number) =>
+  instance.post(`/api/v1/post/chat`, {
+    attn_id,
+    message,
+    book_id,
+  });
+
 export const changeNickname = (nickname: string) =>
   instance.put(`/api/v1/user/me/nickname`, { nickname });
 export const checkDuplicateName = (nickname: string) =>
@@ -21,4 +32,14 @@ export const changeProfilePhotoImage = (image: File) => {
   const formData = new FormData();
   formData.append('image', image);
   return instance.put(`/api/v1/user/me/image`, formData);
+};
+
+// 책 주인이 빌려줌 (채팅창 모달에서)
+export const rent = (attn_id: number, book_id: number, allow: boolean) => {
+  instance.put(`api/v1/post/rent`, { attn_id, book_id, allow });
+};
+
+// 대출 신청
+export const requestRent = (attn_id: number, book_id: number) => {
+  instance.post(`api/v1/post/rent`, { attn_id, book_id });
 };

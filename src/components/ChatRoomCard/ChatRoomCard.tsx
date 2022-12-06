@@ -8,9 +8,10 @@ interface Props {
   subTitle?: string;
   rankerInfoClickHandler?: () => void;
   imageURL?: string;
+  user_id?: any;
 }
 
-const ChatRoomCard = ({ title, subTitle, rankerInfoClickHandler, imageURL }: Props) => {
+const ChatRoomCard = ({ title, subTitle, rankerInfoClickHandler, imageURL, user_id }: Props) => {
   const navigate = useNavigate();
 
   return (
@@ -20,12 +21,10 @@ const ChatRoomCard = ({ title, subTitle, rankerInfoClickHandler, imageURL }: Pro
       </S.ProfileArea>
       <S.InfoArea>
         <S.StampAmount className={'title'}>{title}</S.StampAmount>
-        <S.StampAmount>{subTitle}</S.StampAmount>
+        <S.SubTitle>{subTitle}</S.SubTitle>
       </S.InfoArea>
       <S.RightButton>
-        <RightButton
-          onClick={rankerInfoClickHandler ? rankerInfoClickHandler : () => navigate('/chat/1')}
-        />
+        <RightButton onClick={rankerInfoClickHandler} />
       </S.RightButton>
     </S.RankingCardWrapper>
   );
