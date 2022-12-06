@@ -57,6 +57,8 @@ const mockData = {
 };
 
 const Home = () => {
+  const navigate = useNavigate();
+
   const { isLoading, isSuccess, data } = useQuery(['home'], async () => await getHomeData());
   const { data: myData } = useQuery(['mypage'], async () => await getMyData());
 
@@ -65,7 +67,6 @@ const Home = () => {
   }
 
   // const data = mockData;
-  const navigate = useNavigate();
 
   return (
     <Layout title="홈" noHeader>

@@ -27,6 +27,8 @@ const mockData = [
 ];
 
 const Chat = () => {
+  const navigate = useNavigate();
+
   const { isLoading, isSuccess, data } = useQuery(
     ['chatRoom'],
     async () => await getChatRoomList(),
@@ -37,7 +39,6 @@ const Chat = () => {
   }
 
   // const data = mockData;
-  const navigate = useNavigate();
 
   return (
     <Layout title={'채팅 목록'}>
