@@ -90,7 +90,6 @@ const ChatRoom = () => {
             value={text}
             onChange={(e) => handleOnChange(e)}
             placeholder={'메세지를 입력하세요'}
-            autoFocus
           />
           {/*<button>입력</button>*/}
         </Form>
