@@ -9,8 +9,22 @@ import ChangePhoto from './pages/ChangePhoto';
 import Account from './pages/Account';
 import Signout from './pages/Signout';
 import ChatRoom from './pages/ChatRoom';
+import * as queryString from 'query-string';
+import { useParams } from 'react-router-dom';
+import { instance } from './request';
+
+const AUTH_TOKEN =
+  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjI1NDkzNzg2NDMiLCJ1c2VyX2lkIjozLCJpYXQiOjE2NjkzNTYxNTgsImV4cCI6MTc3Mzk3NTYxNTh9.E5r9TTbWSUm2MLWy_bqFcSXHatqhn4IYhrvOHp9gbQM';
 
 function App() {
+  const { token } = useParams();
+
+  console.log(token);
+
+  // const queryObj = queryString.parse(String(access_token));
+  //const { token } = queryObj;
+  instance.defaults.headers.common['Authorization'] = token ? String(token) : AUTH_TOKEN;
+
   return (
     <BrowserRouter>
       <Routes>
