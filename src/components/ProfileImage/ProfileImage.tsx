@@ -1,6 +1,5 @@
 import React, { Dispatch } from 'react';
 
-import ProfileEraseImage from '../../assets/profile-erase-image.svg';
 import { UNDEF } from '../../constants/shared';
 import useImageReader from '../../hooks/useImageReader';
 
@@ -29,7 +28,8 @@ const ProfileImage = ({ thumbnail, setThumbnail }: IProfileImage) => {
           <S.CircleAura />
           <S.ProfileImage ref={imgRef} />
           <S.ProfileEraseButton onClick={removeProfileImage}>
-            <ProfileEraseImage />
+            {/*<ProfileEraseImage />*/}
+            <img src={'/images/profile-erase-image.svg'} />
           </S.ProfileEraseButton>
         </>
       )}

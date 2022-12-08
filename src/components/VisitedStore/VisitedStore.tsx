@@ -25,7 +25,10 @@ const VisitedStore = ({
       }}
     >
       <S.StoreImageWrapper>
-        <img src={thumbnailUrl ? thumbnailUrl : DEFAULT_IMAGE_URL} alt="매장 이미지 미리보기" />
+        <img
+          src={thumbnailUrl?.slice(22) === '' ? DEFAULT_IMAGE_URL : thumbnailUrl}
+          alt="책 이미지 미리보기"
+        />
       </S.StoreImageWrapper>
       <S.StoreDescriptionWrapper>
         <h1 className="store-title">{title}</h1>

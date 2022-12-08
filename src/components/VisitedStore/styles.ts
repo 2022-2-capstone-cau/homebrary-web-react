@@ -13,10 +13,17 @@ export const StoreDisplay = styled.section`
 
 export const StoreImageWrapper = styled.div`
   position: relative;
-  height: 146.86px;
+  height: 160px;
   border-radius: 8px;
   overflow: hidden;
   background-color: #f6f6f6;
+  width: 160px;
+  aspect-ratio: 1 / 1;
+
+  & > img {
+    width: 160px;
+    object-fit: fill;
+  }
 `;
 
 export const SubTitles = styled.div`
