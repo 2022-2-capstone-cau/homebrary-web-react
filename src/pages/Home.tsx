@@ -96,14 +96,7 @@ const Home = () => {
                   key={item.book_id}
                   title={item.title}
                   onClickHandler={() => {
-                    //web?url=encodeURIComponent("http://.../")&title=닉네임변경
-                    //navigate(`homebrary://post/1`);
-                    //window.location.replace(`homebrary://post/${item.book_id}`);
-
-                    //location.href = `homebrary://post/1`;
-
                     exeDeepLink(`post/${item.book_id}`);
-                    //console.log(`homebrary://post/${item.book_id}`, location.href);
                   }}
                 />
               ))}

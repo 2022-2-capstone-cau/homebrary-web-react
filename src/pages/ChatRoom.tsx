@@ -8,7 +8,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import ChatMessageBubble from '../components/ChatMessageBubble';
 import BookConfirmAlert from '../components/BookConfirmAlert';
 import { useQuery } from 'react-query';
-import { getChatContentList, getChatRoomList, rent, requestRent, sendChat } from '../request';
+import {
+  getChatContentList,
+  getChatRoomList,
+  rent,
+  requestRent,
+  requestReturn,
+  sendChat,
+} from '../request';
 import { useState } from 'react';
 import Button from '../components/Shared/Button';
 import * as queryString from 'query-string';
@@ -91,6 +98,12 @@ const ChatRoom = () => {
         {/*    await requestRent(1, 1);*/}
         {/*  }}*/}
         {/*/>*/}
+        <Button
+          text={'반납 요청하기'}
+          width={'calc(100% - 40px)'}
+          clickListener={async () => await requestReturn(Number(book_id))}
+          bgColor={'#FF463B'}
+        />
         <BubbleContainer>
           {isSuccess &&
             data

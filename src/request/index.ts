@@ -6,7 +6,7 @@ const AUTH_TOKEN =
   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjI1NDkzNzg2NDMiLCJ1c2VyX2lkIjozLCJpYXQiOjE2NjkzNTYxNTgsImV4cCI6MTc3Mzk3NTYxNTh9.E5r9TTbWSUm2MLWy_bqFcSXHatqhn4IYhrvOHp9gbQM';
 
 axios.defaults.baseURL = 'http://3.34.67.144:3000/';
-instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+// instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 export const getHomeData = () => instance.get(`/api/v1/home`).then((res) => res.data.body);
 export const getMyData = () => instance.get(`/api/v1/user/me/mypage`).then((res) => res.data.body);
@@ -42,4 +42,9 @@ export const rent = (attn_id: number, book_id: number, allow: boolean) => {
 // 대출 신청
 export const requestRent = (attn_id: number, book_id: number) => {
   instance.post(`api/v1/post/rent`, { attn_id, book_id });
+};
+
+// 반납
+export const requestReturn = (book_id: number) => {
+  instance.post(`/api/v1/post/return`, { book_id });
 };
