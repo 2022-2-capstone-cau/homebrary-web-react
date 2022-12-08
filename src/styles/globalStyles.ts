@@ -21,6 +21,11 @@ const GlobalStyle = createGlobalStyle`
   .container {
     padding: 0 20px;
   }
+  input,
+textarea,
+select {
+    font-size: 16px;
+}
 `;
 
 export default GlobalStyle;

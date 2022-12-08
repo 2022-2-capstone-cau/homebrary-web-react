@@ -11,6 +11,8 @@ interface ButtonProps {
   left?: string;
   right?: string;
   bottom?: string;
+  fontSize?: string;
+  padding?: string;
 }
 
 const MAIN_BLUE = colors.mainBlue;
@@ -26,8 +28,10 @@ export const Button = styled.button<ButtonProps>`
   bottom: ${({ bottom }) => bottom ?? 'default'};
 
   padding: 18px;
+  padding: ${({ padding }) => padding ?? '18px'};
   border-radius: 8px;
   ${({ theme }) => theme.fonts.subTitle1};
+  font-size: ${({ fontSize }) => fontSize ?? '16px'};
   border: none;
   outline: none;
   cursor: pointer;

@@ -15,6 +15,8 @@ interface ButtonProps {
   // Etc.
   disabled?: boolean;
   clickListener: () => void;
+  fontSize?: string;
+  padding?: string;
 }
 
 const Button = ({
@@ -29,6 +31,8 @@ const Button = ({
   bottom,
   disabled,
   clickListener,
+  fontSize,
+  padding,
 }: ButtonProps) => {
   return (
     <S.Button
@@ -42,6 +46,8 @@ const Button = ({
       bottom={bottom}
       disabled={disabled}
       onClick={clickListener}
+      fontSize={fontSize}
+      padding={padding}
     >
       {text}
     </S.Button>

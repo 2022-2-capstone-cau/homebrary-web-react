@@ -57,6 +57,7 @@ const ChatRoom = () => {
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setText(value);
+    e.stopPropagation();
   };
 
   const handleSubmit = async () => {
@@ -108,6 +109,8 @@ const ChatRoom = () => {
             clickListener={() => console.log('df')}
             bgColor={'#FF463B'}
             width="40px"
+            fontSize={'16px'}
+            padding={'10px'}
           />
         </Form>
       </Container>
@@ -150,4 +153,8 @@ export const Input = styled.input`
   border-radius: 10px;
   background: #f8f8fc;
   outline: none;
+`;
+
+const StyledButton = styled(Button)`
+  font-size: 12px;
 `;
