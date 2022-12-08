@@ -111,7 +111,11 @@ const ChatRoom = () => {
             data
               // ?.filter((chat: any) => chat.attn_id !== Number(attn_id))
               .map((chat: any, idx: number) => (
-                <ChatMessageBubble key={`${chat.chat_id}-${idx}`} message={chat.message} />
+                <ChatMessageBubble
+                  key={`${chat.chat_id}-${idx}`}
+                  me={chat.user_name === user_name}
+                  message={chat.message}
+                />
               ))}
         </BubbleContainer>
         <Form onSubmit={handleSubmit}>

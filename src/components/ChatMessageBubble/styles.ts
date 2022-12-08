@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 
-export const BubbleContainer = styled.div`
+export const BubbleContainer = styled.div<{ me?: boolean }>`
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  justify-content: ${({ me }) => (me ? 'flex-end' : 'flex-start')};
+  width: 100%;
 `;
 
 export const Bubble = styled.div`
   display: flex;
   align-items: center;
-  width: 80%;
+
+  width: fit-content;
   height: 42px;
   background: #f8f8fc;
   border-radius: 10px;
