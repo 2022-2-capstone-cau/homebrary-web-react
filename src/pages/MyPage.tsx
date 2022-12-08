@@ -58,18 +58,14 @@ const MyPage = () => {
             </div>
             <div className="store-list-layout">
               {data?.rents &&
-                data?.rents.map((value: any) => (
-                  <VisitedStore value={value} onClick={() => exeDeepLink(`post/${value.id}`)} />
-                ))}
+                data?.rents.map((value: any) => <VisitedStore value={value} key={value.book_id} />)}
             </div>
             <div className="store-list-title">
               <span>{data?.user.name}</span>님의 보관 목록
             </div>
             <div className="store-list-layout">
               {data?.owns &&
-                data?.owns.map((value: any) => (
-                  <VisitedStore value={value} onClick={() => exeDeepLink(`post/${value.id}`)} />
-                ))}
+                data?.owns.map((value: any) => <VisitedStore value={value} key={value.book_id} />)}
             </div>
           </MyPagePage>
         </MyPageLayout>

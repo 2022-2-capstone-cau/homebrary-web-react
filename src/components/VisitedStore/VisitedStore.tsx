@@ -2,25 +2,28 @@ import { DEFAULT_IMAGE_URL } from '../../constants/omakase';
 import { Link } from 'react-router-dom';
 
 import * as S from './styles';
+import { exeDeepLink } from '../../utils/deepLink';
 
 export interface VisitedStoreProps {
   value: {
-    id?: string;
+    book_id?: string;
     thumbnailUrl?: string;
     title?: string;
     rentedAt?: string;
     returnAt?: string;
     isRent?: boolean;
   };
-  onClick?: () => void;
 }
 
 const VisitedStore = ({
-  value: { id, thumbnailUrl, title, rentedAt, returnAt, isRent },
-  onClick,
+  value: { book_id, thumbnailUrl, title, rentedAt, returnAt, isRent },
 }: VisitedStoreProps) => {
   return (
-    <S.StoreDisplay onClick={onClick}>
+    <S.StoreDisplay
+      onClick={() => {
+        exeDeepLink(`post/${book_id}`);
+      }}
+    >
       <S.StoreImageWrapper>
         <img src={thumbnailUrl ? thumbnailUrl : DEFAULT_IMAGE_URL} alt="매장 이미지 미리보기" />
       </S.StoreImageWrapper>
