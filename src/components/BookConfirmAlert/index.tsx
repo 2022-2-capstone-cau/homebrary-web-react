@@ -13,7 +13,9 @@ const BookConfirmAlert = ({ type, okHandler, closeHandler, name, bookName }: Pro
   return (
     <Container>
       <p>
-        {name}님에게 <b>{bookName}</b> 책 {type === 'return' ? '반납' : '대출'} 요청이 왔습니다.
+        {name}님이 {type === 'return' ? '반납' : '대출'} 요청을 했어요.
+        <br />
+        <br />책 제목 : {bookName}
       </p>
       <ButtonContainer>
         <Button text={'거절'} clickListener={closeHandler} bgColor={'#D0D0DB'} width="100%" />

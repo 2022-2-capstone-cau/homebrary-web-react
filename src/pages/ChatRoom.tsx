@@ -53,7 +53,7 @@ const ChatRoom = () => {
 
   const queryObj = queryString.parse(String(id));
 
-  const { attn_id, book_id, name, bookName } = queryObj;
+  const { attn_id, book_id, attn_name, user_name, bookName } = queryObj;
 
   const { data, isSuccess } = useQuery(
     ['chatRoom'],
@@ -72,11 +72,11 @@ const ChatRoom = () => {
   };
 
   return (
-    <ModalLayout title={`${name} 도서관`}>
+    <ModalLayout title={`${attn_name}`}>
       <Container className={'container'}>
         <BookConfirmAlert
           type={'rental'}
-          name={name}
+          name={attn_name}
           bookName={bookName}
           okHandler={async () => {
             await rent(Number(attn_id), Number(book_id), true);
@@ -98,18 +98,20 @@ const ChatRoom = () => {
         {/*    await requestRent(1, 1);*/}
         {/*  }}*/}
         {/*/>*/}
-        <Button
-          text={'반납 요청하기'}
-          width={'calc(100% - 40px)'}
-          clickListener={async () => await requestReturn(Number(book_id))}
-          bgColor={'#FF463B'}
-        />
+        {isSuccess && data[0].attn_id === Number(attn_id) && (
+          <Button
+            text={'반납하기'}
+            width={'calc(100% - 40px)'}
+            clickListener={async () => await requestReturn(Number(book_id))}
+            bgColor={'#FF463B'}
+          />
+        )}
         <BubbleContainer>
           {isSuccess &&
             data
-              ?.filter((chat: any) => chat.attn_id !== Number(attn_id))
-              .map((chat: any) => (
-                <ChatMessageBubble key={`${chat.chat_id}`} message={chat.message} />
+              // ?.filter((chat: any) => chat.attn_id !== Number(attn_id))
+              .map((chat: any, idx: number) => (
+                <ChatMessageBubble key={`${chat.chat_id}-${idx}`} message={chat.message} />
               ))}
         </BubbleContainer>
         <Form onSubmit={handleSubmit}>

@@ -44,16 +44,16 @@ const Chat = () => {
     <Layout title={'채팅 목록'}>
       <Container className={'container'}>
         {isSuccess &&
-          data?.map((room: any) => (
+          data?.map((room: any, idx: number) => (
             <ChatRoomCard
-              key={room.attn_id}
+              key={`${room.attn_id}-${idx}`}
               title={room.bookName}
-              subTitle={room.name}
+              subTitle={room?.attn_name}
               imageURL={room?.bookURL ?? '/homebrary-logo.png'}
               user_id={room?.attn_id}
               rankerInfoClickHandler={() =>
                 navigate(
-                  `/chats/attn_id=${room.attn_id}&book_id=${room.book_id}&name=${room.name}&bookName=${room.bookName}`,
+                  `/chats/attn_id=${room.attn_id}&book_id=${room.book_id}&attn_name=${room.attn_name}&user_name=${room.user_name}&bookName=${room.bookName}`,
                 )
               }
             />
