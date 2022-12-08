@@ -1,4 +1,12 @@
 import axios from 'axios';
+import * as queryString from 'query-string';
+import { useParams } from 'react-router-dom';
+
+const { access_token } = useParams();
+
+const queryObj = queryString.parse(String(access_token));
+
+const { token } = queryObj;
 
 const instance = axios.create({ baseURL: process.env.REACT_APP_API_ENDPOINT });
 
@@ -6,7 +14,7 @@ const AUTH_TOKEN =
   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjI1NDkzNzg2NDMiLCJ1c2VyX2lkIjozLCJpYXQiOjE2NjkzNTYxNTgsImV4cCI6MTc3Mzk3NTYxNTh9.E5r9TTbWSUm2MLWy_bqFcSXHatqhn4IYhrvOHp9gbQM';
 
 axios.defaults.baseURL = 'http://3.34.67.144:3000/';
-// instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+instance.defaults.headers.common['Authorization'] = String(token) ?? AUTH_TOKEN;
 
 export const getHomeData = () => instance.get(`/api/v1/home`).then((res) => res.data.body);
 export const getMyData = () => instance.get(`/api/v1/user/me/mypage`).then((res) => res.data.body);

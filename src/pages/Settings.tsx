@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import { NETWORK_ERROR, UNKNOWN_ERROR } from '../constants/error';
 import { showAlertModal } from '../utils/modal';
 
+// homebrary://web?url=
 const Settings = () => {
   const handleLogout = async () => {
     try {
