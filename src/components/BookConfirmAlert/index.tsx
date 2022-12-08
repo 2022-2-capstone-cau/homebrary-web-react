@@ -30,7 +30,8 @@ export default BookConfirmAlert;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #d9d9d9;
+  background-color: #d9d9d952;
+  border-radius: 10px;
   width: clac(100% - 20px);
   padding: 20px;
   margin-bottom: 20px;
