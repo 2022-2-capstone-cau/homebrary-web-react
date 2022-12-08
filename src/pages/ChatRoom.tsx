@@ -65,7 +65,7 @@ const ChatRoom = () => {
   };
 
   return (
-    <ModalLayout title="효진 도서관">
+    <ModalLayout title={`${name} 도서관`}>
       <Container className={'container'}>
         <BookConfirmAlert
           type={'rental'}
@@ -93,9 +93,11 @@ const ChatRoom = () => {
         {/*/>*/}
         <BubbleContainer>
           {isSuccess &&
-            data?.map((chat: any) => (
-              <ChatMessageBubble key={`${chat.date}-${chat.message}`} message={chat.message} />
-            ))}
+            data
+              ?.filter((chat: any) => chat.attn_id !== Number(attn_id))
+              .map((chat: any) => (
+                <ChatMessageBubble key={`${chat.chat_id}`} message={chat.message} />
+              ))}
         </BubbleContainer>
         <Form onSubmit={handleSubmit}>
           <Input
