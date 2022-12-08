@@ -51,7 +51,11 @@ const Chat = () => {
               subTitle={room.name}
               imageURL={room?.bookURL ?? '/homebrary-logo.png'}
               user_id={room?.attn_id}
-              rankerInfoClickHandler={() => navigate(`/chats/${room.attn_id}`)}
+              rankerInfoClickHandler={() =>
+                navigate(
+                  `/chats/attn_id=${room.attn_id}&book_id=${room.book_id}&name=${room.name}&bookName=${room.bookName}`,
+                )
+              }
             />
           ))}
       </Container>

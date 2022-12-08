@@ -11,7 +11,7 @@ const MyProfile = ({ userValue, summaryValue }: Props) => {
     <S.MyProfileWrapper className="container">
       <S.MyProfileSection>
         <S.ImageWrapper>
-          <S.ProfileImage src={userValue.profile} />
+          <S.ProfileImage src={userValue.profile ?? '/images/default-profile.png'} />
         </S.ImageWrapper>
         <S.ProfileInformationWrapper>
           <S.Content>

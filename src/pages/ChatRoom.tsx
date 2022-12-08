@@ -4,12 +4,14 @@ import { requestError } from '../@types/shared';
 import ModalLayout from '../components/Layout/ModalLayout';
 import { NETWORK_ERROR, UNKNOWN_ERROR } from '../constants/error';
 import { showAlertModal, showConfirmModal } from '../utils/modal';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import ChatMessageBubble from '../components/ChatMessageBubble';
 import BookConfirmAlert from '../components/BookConfirmAlert';
 import { useQuery } from 'react-query';
 import { getChatContentList, getChatRoomList, rent, requestRent, sendChat } from '../request';
 import { useState } from 'react';
+import Button from '../components/Shared/Button';
+import * as queryString from 'query-string';
 
 const mockData = [
   {
@@ -40,8 +42,16 @@ const mockData = [
 
 const ChatRoom = () => {
   const navigate = useNavigate();
-  const { data, isSuccess } = useQuery(['chatRoom'], async () => await getChatContentList(1, 1));
+  const { id } = useParams();
 
+  const queryObj = queryString.parse(String(id));
+
+  const { attn_id, book_id, name, bookName } = queryObj;
+
+  const { data, isSuccess } = useQuery(
+    ['chatRoom'],
+    async () => await getChatContentList(Number(attn_id), Number(book_id)),
+  );
   const [text, setText] = useState('');
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,7 +60,7 @@ const ChatRoom = () => {
   };
 
   const handleSubmit = async () => {
-    await sendChat(1, text, 1);
+    await sendChat(Number(attn_id), text, Number(book_id));
   };
 
   return (
@@ -58,12 +68,14 @@ const ChatRoom = () => {
       <Container className={'container'}>
         <BookConfirmAlert
           type={'rental'}
+          name={name}
+          bookName={bookName}
           okHandler={async () => {
-            await rent(1, 1, true);
+            await rent(Number(attn_id), Number(book_id), true);
             alert('대출을 수락했습니다.');
           }}
           closeHandler={async () => {
-            await rent(1, 1, false);
+            await rent(Number(attn_id), Number(book_id), false);
             alert('대출을 거절했습니다.');
           }}
         />
@@ -91,7 +103,12 @@ const ChatRoom = () => {
             onChange={(e) => handleOnChange(e)}
             placeholder={'메세지를 입력하세요'}
           />
-          {/*<button>입력</button>*/}
+          <Button
+            text={'입력'}
+            clickListener={() => console.log('df')}
+            bgColor={'#FF463B'}
+            width="40px"
+          />
         </Form>
       </Container>
     </ModalLayout>
@@ -111,23 +128,26 @@ export const BubbleContainer = styled.div`
   flex-direction: column;
   gap: 10px;
   overflow: auto;
-  height: 70%;
+  margin-bottom: 70px;
 `;
 
 export const Form = styled.form`
   position: absolute;
   bottom: 10px;
   left: 0px;
-  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px;
+  width: calc(100% - 40px);
 `;
 
 export const Input = styled.input`
-  width: calc(100% - 60px);
+  width: 250px;
   height: 42px;
   border: solid 1px black;
   border-radius: 10px;
   background: #f8f8fc;
   outline: none;
-  padding: 0 10px;
-  margin: 0 20px;
 `;

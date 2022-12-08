@@ -29,7 +29,7 @@ export const ProfileArea = styled.div<{ rank?: number }>`
 `;
 
 export const ProfileImage = styled.img.attrs({
-  alt: 'profile',
+  alt: '',
 })`
   width: 100%;
   height: 100%;

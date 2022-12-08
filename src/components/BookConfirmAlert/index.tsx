@@ -5,14 +5,15 @@ interface Props {
   type: 'rental' | 'return';
   okHandler: () => void;
   closeHandler: () => void;
+  name?: any;
+  bookName?: any;
 }
 
-const BookConfirmAlert = ({ type, okHandler, closeHandler }: Props) => {
+const BookConfirmAlert = ({ type, okHandler, closeHandler, name, bookName }: Props) => {
   return (
     <Container>
       <p>
-        조용수님에게 모던 자바스크립트 딥다이브 {type === 'return' ? '반납' : '대출'} 요청이
-        왔습니다.
+        {name}님에게 <b>{bookName}</b> 책 {type === 'return' ? '반납' : '대출'} 요청이 왔습니다.
       </p>
       <ButtonContainer>
         <Button text={'거절'} clickListener={closeHandler} bgColor={'#D0D0DB'} width="100%" />
