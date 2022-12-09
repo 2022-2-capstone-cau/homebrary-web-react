@@ -25,7 +25,7 @@ const ModalLayout = ({
       <Button
         text={buttonContent}
         clickListener={clickHandler}
-        width="calc(100% - 40px)"
+        width="calc(100% - 80px)"
         position="absolute"
         left="20px"
         bottom="44px"

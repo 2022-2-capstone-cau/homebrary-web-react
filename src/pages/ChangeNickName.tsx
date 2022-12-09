@@ -7,6 +7,24 @@ import NicknameInput from '../components/NicknameInput';
 import { NETWORK_ERROR, NICKNAME_ERROR, UNKNOWN_ERROR } from '../constants/error';
 import { changeNickname } from '../request';
 import { showAlertModal, showConfirmModal } from '../utils/modal';
+import { toast } from 'react-toastify';
+
+const toastifyCustomOptions = {
+  position: 'top-center',
+  hideProgressBar: true,
+  pauseOnHover: false,
+  autoClose: 1000,
+  theme: 'colored',
+  icon: false,
+  closeButton: false,
+  style: {
+    margin: 'auto',
+    borderRadius: '10px',
+    marginBottom: '20px',
+    width: '90%',
+    fontSize: '14px',
+  },
+} as const;
 
 const ChangeNickName = () => {
   const [nickname, setNickname] = useState<string>('');
@@ -21,14 +39,14 @@ const ChangeNickName = () => {
     try {
       await changeNickname(nickname);
       // refreshUserInfo(Date.now());
-      showAlertModal('닉네임이 변경되었습니다.');
+      toast.success('닉네임이 변경되었습니다.', toastifyCustomOptions);
     } catch (error) {
       const { response } = error as requestError;
       if (!response) return showAlertModal(NETWORK_ERROR);
 
       const { status } = response;
       if (NICKNAME_ERROR[status]) return showAlertModal(NICKNAME_ERROR[status]);
-      return showAlertModal(UNKNOWN_ERROR);
+      toast.error('닉네임 변경에 실패했습니다.', toastifyCustomOptions);
     }
   };
 
