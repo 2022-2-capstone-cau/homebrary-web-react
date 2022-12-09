@@ -75,8 +75,11 @@ const ChatRoom = () => {
 
   const { data, isSuccess } = useQuery(
     ['chatRoomList'],
-    async () => await getChatContentList(Number(attn_id), Number(book_id)),
+    async () => await getChatContentList(attnId, Number(book_id)),
   );
+
+  const attnId: any = isSuccess ? data?.attn_id : Number(attn_id);
+
   const { data: myData, isSuccess: isMyDataSuccess } = useQuery(
     ['mypage'],
     async () => await getMyData(),
