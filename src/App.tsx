@@ -14,11 +14,11 @@ import { useParams } from 'react-router-dom';
 import { instance } from './request';
 
 // user 1
-// const AUTH_TOKEN =
-//   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjI1NDkzNzg2NDMiLCJ1c2VyX2lkIjoxLCJpYXQiOjE2NzA1MTg5MTksImV4cCI6MTc3NDA5MTg5MTl9.hYzp6P7GmPeKhwZrwk2hSf4PLOt4Fq9Cixvt3AtbWKs';
-// user 3
 const AUTH_TOKEN =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjI1NDkzNzg2NDMiLCJ1c2VyX2lkIjozLCJpYXQiOjE2NjkzNTYxNTgsImV4cCI6MTc3Mzk3NTYxNTh9.E5r9TTbWSUm2MLWy_bqFcSXHatqhn4IYhrvOHp9gbQM';
+  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjI1NDkzNzg2NDMiLCJ1c2VyX2lkIjoxLCJpYXQiOjE2NzA1MTg5MTksImV4cCI6MTc3NDA5MTg5MTl9.hYzp6P7GmPeKhwZrwk2hSf4PLOt4Fq9Cixvt3AtbWKs';
+// user 3
+// const AUTH_TOKEN =
+//   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjI1NDkzNzg2NDMiLCJ1c2VyX2lkIjozLCJpYXQiOjE2NjkzNTYxNTgsImV4cCI6MTc3Mzk3NTYxNTh9.E5r9TTbWSUm2MLWy_bqFcSXHatqhn4IYhrvOHp9gbQM';
 
 function App() {
   const { token } = useParams();
