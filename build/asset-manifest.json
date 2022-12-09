@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b3eeeea7.css",
+    "main.js": "/static/js/main.7be9de83.js",
+    "static/media/pattern-two.svg": "/static/media/pattern-two.bebb3cc29bf1c899f9e9e33eee6b645d.svg",
+    "static/media/pattern-one.svg": "/static/media/pattern-one.58d30ad2bab197e97246a910dea8922e.svg",
+    "static/media/horizontal-logo.svg": "/static/media/horizontal-logo.3656bcaa2ce008df1880390709d68c30.svg",
+    "index.html": "/index.html",
+    "static/media/prev.svg": "/static/media/prev.f4dc81dc9ca731c7a4d0dcd1ce174a0a.svg",
+    "static/media/ranking-card-right-button.svg": "/static/media/ranking-card-right-button.35ccb25be610e42a2b55a25cb953554d.svg",
+    "static/media/setting.svg": "/static/media/setting.f896ce40b193a88b824f0d38f3e2c32e.svg",
+    "main.b3eeeea7.css.map": "/static/css/main.b3eeeea7.css.map",
+    "main.7be9de83.js.map": "/static/js/main.7be9de83.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b3eeeea7.css",
+    "static/js/main.7be9de83.js"
+  ]
+}
