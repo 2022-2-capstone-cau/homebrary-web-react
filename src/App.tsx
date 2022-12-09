@@ -23,7 +23,7 @@ const AUTH_TOKEN =
 function App() {
   const token = new URLSearchParams(window.location.search).get('token');
 
-  instance.defaults.headers.common['Authorization'] = token ? String(token) : AUTH_TOKEN;
+  instance.defaults.headers.common['Authorization'] = token ? `Bearer ${token}` : AUTH_TOKEN;
 
   return (
     <BrowserRouter>
