@@ -8,6 +8,7 @@ import theme from './styles/theme';
 import { ToastContainer } from 'react-toastify';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import 'react-toastify/dist/ReactToastify.css';
 
 const queryClient = new QueryClient();
 
@@ -20,9 +21,9 @@ root.render(
       <RecoilRoot>
         <GlobalStyle />
         <ThemeProvider theme={theme}>
+          <ToastContainer limit={1} />
           <App />
         </ThemeProvider>
-        <ToastContainer limit={1} />
       </RecoilRoot>
     </QueryClientProvider>
   </React.StrictMode>,

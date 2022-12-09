@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { toast } from 'react-toastify';
 import { requestError } from '../@types/shared';
 import ModalLayout from '../components/Layout/ModalLayout';
 import { NETWORK_ERROR, UNKNOWN_ERROR } from '../constants/error';
@@ -11,6 +11,7 @@ import { useQuery } from 'react-query';
 import {
   getChatContentList,
   getChatRoomList,
+  getMyData,
   rent,
   requestRent,
   requestReturn,
@@ -19,6 +20,23 @@ import {
 import { useState } from 'react';
 import Button from '../components/Shared/Button';
 import * as queryString from 'query-string';
+
+const toastifyCustomOptions = {
+  position: 'top-center',
+  hideProgressBar: true,
+  pauseOnHover: false,
+  autoClose: 1000,
+  theme: 'colored',
+  icon: false,
+  closeButton: false,
+  style: {
+    margin: 'auto',
+    borderRadius: '10px',
+    marginBottom: '20px',
+    width: '90%',
+    fontSize: '14px',
+  },
+} as const;
 
 const mockData = [
   {
@@ -56,9 +74,14 @@ const ChatRoom = () => {
   const { attn_id, book_id, attn_name, user_name, bookName } = queryObj;
 
   const { data, isSuccess } = useQuery(
-    ['chatRoom'],
+    ['chatRoomList'],
     async () => await getChatContentList(Number(attn_id), Number(book_id)),
   );
+  const { data: myData, isSuccess: isMyDataSuccess } = useQuery(
+    ['mypage'],
+    async () => await getMyData(),
+  );
+
   const [text, setText] = useState('');
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -74,49 +97,41 @@ const ChatRoom = () => {
   return (
     <ModalLayout title={`${attn_name}`}>
       <Container className={'container'}>
-        <BookConfirmAlert
-          type={'rental'}
-          name={attn_name}
-          bookName={bookName}
-          okHandler={async () => {
-            await rent(Number(attn_id), Number(book_id), true);
-            alert('대출을 수락했습니다.');
-          }}
-          closeHandler={async () => {
-            await rent(Number(attn_id), Number(book_id), false);
-            alert('대출을 거절했습니다.');
-          }}
-        />
-        {/*<BookConfirmAlert*/}
-        {/*  type={'return'}*/}
-        {/*  okHandler={async () => {*/}
-        {/*    alert('수락');*/}
-        {/*    await requestRent(1, 1);*/}
-        {/*  }}*/}
-        {/*  closeHandler={async () => {*/}
-        {/*    alert('거절');*/}
-        {/*    await requestRent(1, 1);*/}
-        {/*  }}*/}
-        {/*/>*/}
-        {isSuccess && data[0].attn_id === Number(attn_id) && (
+        {isSuccess && isMyDataSuccess && myData?.user.user_id === data?.rent?.user_id ? (
+          <BookConfirmAlert
+            type={'rental'}
+            name={attn_name}
+            bookName={bookName}
+            okHandler={async () => {
+              await rent(Number(attn_id), Number(book_id), true);
+              toast('대출을 수락했습니다.', toastifyCustomOptions);
+            }}
+            closeHandler={async () => {
+              await rent(Number(attn_id), Number(book_id), false);
+              toast('대출을 거절했습니다.', toastifyCustomOptions);
+            }}
+          />
+        ) : (
           <Button
             text={'반납하기'}
             width={'calc(100% - 40px)'}
-            clickListener={async () => await requestReturn(Number(book_id))}
+            clickListener={async () => {
+              await requestReturn(Number(book_id));
+              toast('반납이 완료되었습니다.', toastifyCustomOptions);
+            }}
             bgColor={'#FF463B'}
           />
         )}
+
         <BubbleContainer>
           {isSuccess &&
-            data
-              // ?.filter((chat: any) => chat.attn_id !== Number(attn_id))
-              .map((chat: any, idx: number) => (
-                <ChatMessageBubble
-                  key={`${chat.chat_id}-${idx}`}
-                  me={chat.user_name === user_name}
-                  message={chat.message}
-                />
-              ))}
+            data?.result?.map((chat: any, idx: number) => (
+              <ChatMessageBubble
+                key={`${chat.date}-${idx}`}
+                me={chat.user_name === user_name}
+                message={chat.message}
+              />
+            ))}
         </BubbleContainer>
         <Form onSubmit={handleSubmit}>
           <Input

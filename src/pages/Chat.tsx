@@ -46,8 +46,8 @@ const Chat = () => {
         {isSuccess &&
           data?.map((room: any, idx: number) => (
             <ChatRoomCard
-              key={`${room.attn_id}-${idx}`}
-              title={room.bookName}
+              key={`${room?.attn_id}-${idx}`}
+              title={room?.bookName}
               subTitle={room?.attn_name}
               imageURL={room?.bookURL ?? '/homebrary-logo.png'}
               user_id={room?.attn_id}
