@@ -97,6 +97,7 @@ const ChatRoom = () => {
     event.preventDefault();
     await sendChat(Number(attn_id), text, Number(book_id));
     await refetch();
+    setText('');
   };
 
   return (
