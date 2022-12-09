@@ -9,6 +9,24 @@ import { UNDEF } from '../constants/shared';
 import { showAlertModal, showConfirmModal } from '../utils/modal';
 import { changeProfilePhotoImage } from '../request';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
+const toastifyCustomOptions = {
+  position: 'top-center',
+  hideProgressBar: true,
+  pauseOnHover: false,
+  autoClose: 1000,
+  theme: 'colored',
+  icon: false,
+  closeButton: false,
+  style: {
+    margin: 'auto',
+    borderRadius: '10px',
+    marginBottom: '20px',
+    width: '90%',
+    fontSize: '14px',
+  },
+} as const;
 
 const ChangePhoto = () => {
   const [thumbnail, setThumbnail] = useState<File | undefined>();
@@ -20,7 +38,8 @@ const ChangePhoto = () => {
 
     try {
       await changeProfilePhotoImage(thumbnail);
-      showAlertModal('프로필사진 변경이 완료되었습니다.');
+      // showAlertModal('프로필사진 변경이 완료되었습니다.');
+      toast.success('프로필사진 변경이 완료되었습니다.', toastifyCustomOptions);
       navigate('/mypage');
     } catch (error) {
       const { response } = error as requestError;
