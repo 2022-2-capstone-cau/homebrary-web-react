@@ -21,12 +21,8 @@ const AUTH_TOKEN =
 //   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjI1NDkzNzg2NDMiLCJ1c2VyX2lkIjozLCJpYXQiOjE2NjkzNTYxNTgsImV4cCI6MTc3Mzk3NTYxNTh9.E5r9TTbWSUm2MLWy_bqFcSXHatqhn4IYhrvOHp9gbQM';
 
 function App() {
-  const { token } = useParams();
+  const token = new URLSearchParams(window.location.search).get('token');
 
-  console.log('[token]', token);
-
-  // const queryObj = queryString.parse(String(access_token));
-  //const { token } = queryObj;
   instance.defaults.headers.common['Authorization'] = token ? String(token) : AUTH_TOKEN;
 
   return (
