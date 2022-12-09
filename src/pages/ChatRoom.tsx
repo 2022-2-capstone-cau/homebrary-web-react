@@ -73,7 +73,7 @@ const ChatRoom = () => {
 
   const { attn_id, book_id, attn_name, user_name, bookName } = queryObj;
 
-  const { data, isSuccess } = useQuery(
+  const { data, isSuccess, refetch } = useQuery(
     ['chatRoomList'],
     async () => await getChatContentList(attnId, Number(book_id)),
   );
@@ -93,8 +93,10 @@ const ChatRoom = () => {
     e.stopPropagation();
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
     await sendChat(Number(attn_id), text, Number(book_id));
+    await refetch();
   };
 
   return (

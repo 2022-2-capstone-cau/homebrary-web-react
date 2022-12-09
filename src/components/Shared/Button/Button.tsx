@@ -19,7 +19,7 @@ interface ButtonProps {
   padding?: string;
 }
 
-const Button = ({
+const ButtonV2 = ({
   text,
   width,
   bgColor,
@@ -54,4 +54,4 @@ const Button = ({
   );
 };
 
-export default Button;
+export default ButtonV2;
